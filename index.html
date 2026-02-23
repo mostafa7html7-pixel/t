@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Showcase 2028</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
+    <style>
+        /* إعدادات الألوان والهوية البصرية 2028 */
+        :root {
+            --black: #000000;
+            --dark-red: #660000;
+            --neon-red: #ff0000;
+            --neon-orange: #ff4d00;
+            --gold-orange: #ff8c00;
+            --glass: rgba(20, 20, 20, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--black);
+            color: white;
+            font-family: 'Tajawal', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* تحسين السكرول بار ليناسب التصميم */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--neon-red), var(--neon-orange)); }
+
+        /* الشاشة الافتتاحية */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, var(--dark-red) 0%, var(--black) 80%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 10vw, 5rem);
+            background: linear-gradient(90deg, var(--neon-red), var(--neon-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255,0,0,0.5));
+            text-transform: uppercase;
+        }
+
+        /* الحاوية الرئيسية للصور */
+        .showcase { padding: 50px 5%; }
+
+        .image-section {
+            margin-bottom: 150px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .image-section.visible { opacity: 1; transform: translateY(0); }
+
+        .image-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--gold-orange);
+            display: inline-block;
+            border-bottom: 2px solid var(--neon-red);
+        }
+
+        /* تصميم الصور العادية 1 و 2 */
+        .standard-frame {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 77, 0, 0.3);
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+        }
+
+        .standard-frame img { width: 100%; display: block; }
+
+        /* تصميم "الوحش" للصورة الثالثة (التقييمات) */
+        .mega-viewer {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--glass);
+            border: 2px solid var(--neon-red);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 100px rgba(255, 0, 0, 0.3);
+        }
+
+        /* شريط علوي احترافي */
+        .viewer-header {
+            background: #1a1a1a;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .dots { display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: var(--neon-red); box-shadow: 0 0 10px var(--neon-red); }
+        .orange { background: var(--neon-orange); }
+
+        /* حاوية العرض الكامل للصورة الطويلة */
+        .full-image-scroll {
+            width: 100%;
+            height: 85vh; /* ارتفاع الشاشة تقريباً */
+            overflow-y: auto; /* يسمح بالتمرير داخل الإطار */
+            scrollbar-width: thin;
+        }
+
+        .full-image-scroll img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* تسمية توضيحية */
+        .badge {
+            background: linear-gradient(45deg, var(--neon-red), var(--neon-orange));
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>FUTURE VISION 2028</h1>
+        <p style="color: var(--gold-orange); margin-top: 10px;">نظام عرض النتائج والتقييمات الذكي</p>
+    </section>
+
+    <main class="showcase">
+        
+        <div class="image-section" id="s1">
+            <h2 class="image-title">النموذج (أ)</h2>
+            <div class="standard-frame">
+                <img src="1.png" alt="Page 1">
+            </div>
+        </div>
+
+        <div class="image-section" id="s2">
+            <h2 class="image-title">النموذج (ب)</h2>
+            <div class="standard-frame">
+                <img src="2.png" alt="Page 2">
+            </div>
+        </div>
+
+        <div class="image-section" id="s3">
+            <h2 class="image-title">تقييمات الأسبوع الثالث - العرض الكامل</h2>
+            <div class="mega-viewer">
+                <div class="viewer-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot orange"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="badge">LIVE PREVIEW 2028</div>
+                </div>
+                <div class="full-image-scroll">
+                    <img src="3.png" alt="Full Evaluations Page">
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #666;">يمكنك التمرير داخل الإطار أعلاه لرؤية كامل محتوى الصفحة</p>
+        </div>
+
+    </main>
+
+    <script>
+        // تأثير الظهور عند التمرير (Scroll Reveal)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.image-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
